@@ -6,15 +6,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of LesHackathons">
+  
+        <ion-label>{{item.nbr_places_limit}}</ion-label>
+        <ion-label>{{splitDate(item.date_lim_insc)}}</ion-label>
+        <ion-label>{{splitDate(item.date_debut)}}</ion-label>
+        <ion-label>{{splitDate(item.date_fin)}}</ion-label>
+        <ion-label>{{item.lieu}}</ion-label>
+        <ion-label>{{item.heure}}</ion-label>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
+

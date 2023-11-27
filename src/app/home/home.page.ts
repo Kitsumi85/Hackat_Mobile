@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router'
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,6 +9,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePage {
 
-  constructor(public http:HttpClient) {}
+  LesHackathons:any
+  constructor(private router : Router, private http:HttpClient) {
+    this.http.get("http://192.168.55.15:8080/api").subscribe(data =>{
 
+      console.log(data)
+      this.LesHackathons=data;
+  })
+  }
+
+  splitDate(value:any){
+    return new Date(value).toLocaleDateString("en-GB");
+  }
 }
