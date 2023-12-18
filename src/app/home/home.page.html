@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Hackathon
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,6 +9,7 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of LesHackathons">
+      <ion-row (click)="MonClick(item)">
   
         <ion-label>{{item.nbr_places_limit}}</ion-label>
         <ion-label>{{splitDate(item.date_lim_insc)}}</ion-label>
@@ -17,6 +18,7 @@
         <ion-label>{{item.lieu}}</ion-label>
         <ion-label>{{item.heure}}</ion-label>
 
+      </ion-row>
     </ion-item>
   </ion-list>
 </ion-content>

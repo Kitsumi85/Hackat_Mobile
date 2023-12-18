@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'atelier',
+    loadChildren: () => import('./atelier/atelier.module').then( m => m.AtelierPageModule)
+  },
 ];
 
 @NgModule({
