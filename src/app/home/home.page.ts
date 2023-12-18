@@ -21,4 +21,17 @@ export class HomePage {
   splitDate(value:any){
     return new Date(value).toLocaleDateString("en-GB");
   }
+
+
+  MonClick(item:any)
+  {
+    
+      let NavigationExtras:NavigationExtras={
+        state:{
+          param1 :item.id
+        }
+      };
+      this.router.navigate(['/atelier'],NavigationExtras)
+
+  }
 }
