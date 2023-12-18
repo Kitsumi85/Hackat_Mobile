@@ -11,7 +11,7 @@ export class HomePage {
 
   LesHackathons:any
   constructor(private router : Router, private http:HttpClient) {
-    this.http.get("http://192.168.55.15:8080/api").subscribe(data =>{
+    this.http.get("http://192.168.55.15:8080/api/hackathon").subscribe(data =>{
 
       console.log(data)
       this.LesHackathons=data;
