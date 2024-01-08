@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 @Component({
   selector: 'app-atelier',
   templateUrl: './atelier.page.html',
@@ -7,7 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AtelierPage implements OnInit {
 
-  constructor() { }
+  public LesAteliers:any
+  public id:any; 
+  constructor(public http:HttpClient, private router: Router)
+    { 
+      let navigation:any =this.router.getCurrentNavigation()?.extras.state
+      this.id= navigation.param1;
+      
+      this.http.get("http://192.168.55.15:8080/api/evenements-ateliers/" + this.id).subscribe(data =>{
+
+      console.log(data)
+      this.LesAteliers=data;
+    })
+  }
+
+  splitDate(value:any){
+    return new Date(value).toLocaleDateString("en-GB");
+  }
 
   ngOnInit() {
   }
