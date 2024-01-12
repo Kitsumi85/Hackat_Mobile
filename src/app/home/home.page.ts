@@ -25,13 +25,13 @@ export class HomePage {
 
   MonClick(item:any)
   {
-    
+      console.log(item)
       let NavigationExtras:NavigationExtras={
         state:{
-          param1 :item.id
+          param1 :item
         }
       };
-      this.router.navigate(['/atelier'],NavigationExtras)
+      this.router.navigate(['/atelier'],NavigationExtras) 
 
   }
 }

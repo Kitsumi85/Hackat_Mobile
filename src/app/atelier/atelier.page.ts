@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+
 @Component({
   selector: 'app-atelier',
   templateUrl: './atelier.page.html',
@@ -14,9 +15,9 @@ export class AtelierPage implements OnInit {
     { 
       let navigation:any =this.router.getCurrentNavigation()?.extras.state
       this.id= navigation.param1;
-      
-      this.http.get("http://192.168.55.15:8080/api/evenements-ateliers/" + this.id).subscribe(data =>{
-
+      let url = "http://192.168.55.15:8080/api/evenements-ateliers/" + this.id.id;
+      this.http.get(url).subscribe(data =>{
+        
       console.log(data)
       this.LesAteliers=data;
     })
