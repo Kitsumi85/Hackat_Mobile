@@ -15,7 +15,7 @@
         <ion-label>{{item.duree}}</ion-label>
         <ion-label>{{item.salle}}</ion-label>
         <ion-label>{{item.heure}}</ion-label>
-        <ion-button>Inscription</ion-button>
+        <ion-button (click)="onSubmit(item)" type="submit">Inscription</ion-button>
     </ion-item>
     
   </ion-list>

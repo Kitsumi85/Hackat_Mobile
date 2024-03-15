@@ -8,17 +8,28 @@
   
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
     <ion-item lines="full">
-      <ion-label position="floating">Name</ion-label>
+      <ion-label position="floating">Nom</ion-label>
       <ion-input formControlName="name" type="text"></ion-input>
     </ion-item>
     <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
-      Name is required.
+      Nom obligatoire.
     </span>
-    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.minlength">
-      Min 3 chars long.
+    <ion-item lines="full">
+      <ion-label position="floating">Prénom</ion-label>
+      <ion-input formControlName="first_name" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.name.errors?.required">
+      Prénom obligatoire.
     </span>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Submit</ion-button>
-      </ion-col>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <span class="error ion-padding" *ngIf="submitted && errorCtr.email.errors?.required && errorCtr.email.errors?.pattern">
+      adresse invalide
+    </span>
+    <ion-col>
+      <ion-button type="submit" color="primary" expand="block">Submit</ion-button>
+    </ion-col>
   </form>
 </ion-content>

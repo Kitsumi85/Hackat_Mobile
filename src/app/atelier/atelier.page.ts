@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router'
 
 @Component({
   selector: 'app-atelier',
@@ -10,7 +10,8 @@ import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 export class AtelierPage implements OnInit {
 
   public LesAteliers:any
-  public id:any; 
+  public id:any;
+  submitted = false; 
   constructor(public http:HttpClient, private router: Router)
     { 
       let navigation:any =this.router.getCurrentNavigation()?.extras.state
@@ -25,6 +26,18 @@ export class AtelierPage implements OnInit {
 
   splitDate(value:any){
     return new Date(value).toLocaleDateString("en-GB");
+  }
+
+  onSubmit(item: any) {
+    this.submitted = true;
+    console.log(item)
+    let NavigationExtras:NavigationExtras={
+      state:{
+        param1 :item
+      }
+    };
+    this.router.navigate(['/inscription-atelier'],NavigationExtras);
+
   }
 
   ngOnInit() {
