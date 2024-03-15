@@ -12,7 +12,7 @@
     <ion-item *ngFor="let item of LesHackathons">
         <ion-card (click)="MonClick(item)">
           <ion-card-header>
-            <ion-card-title>Hackathon</ion-card-title>
+            <ion-card-title>{{item.nom}}</ion-card-title>
           </ion-card-header>
         
           <ion-card-content>
