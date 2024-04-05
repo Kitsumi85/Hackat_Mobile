@@ -27,6 +27,18 @@ export class AtelierPage implements OnInit {
     return new Date(value).toLocaleDateString("en-GB");
   }
 
+  onSubmit(item: any) {
+    this.submitted = true;
+    console.log(item)
+    let NavigationExtras:NavigationExtras={
+      state:{
+        param1 :item
+      }
+    };
+    this.router.navigate(['/inscription-atelier/'],NavigationExtras);
+
+  }
+
   ngOnInit() {
   }
 
