@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router'
 
 @Component({
   selector: 'app-atelier',
@@ -36,7 +36,7 @@ export class AtelierPage implements OnInit {
         param1 :item
       }
     };
-    this.router.navigate(['/inscription-atelier/'],NavigationExtras);
+    this.router.navigate(['/inscription-atelier'],NavigationExtras);
 
   }
 

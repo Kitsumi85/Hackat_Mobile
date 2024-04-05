@@ -13,17 +13,29 @@ export class InscriptionAtelierPage implements OnInit {
   myForm: any;
   item : any;
   submitted = false;
-  constructor(public formBuilder: FormBuilder, public http: HttpClient, private router: Router) { }
+  isAlertOpen = false;
+  alertButtons = ['Action'];
+  setOpen(isOpen: boolean) {
+    this.isAlertOpen = isOpen;
+  }
+  constructor(public formBuilder: FormBuilder, private http:HttpClient, private router : Router) {
+    let navigation:any =this.router.getCurrentNavigation()?.extras.state
+      this.item= navigation.param1;
+   }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
+      first_name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
     })
   }
  
   get errorCtr() {
     return this.myForm.controls;
   }
+  
+
   onSubmit() {
     this.submitted = true;
     if (!this.myForm.valid) {
@@ -38,7 +50,7 @@ export class InscriptionAtelierPage implements OnInit {
         (data:any) =>{ 
         console.log(data)
         if (data.erreur) {
-          this.router.navigate(['/erreur'])
+          this.setOpen(true)
         }
         },
         );
@@ -47,7 +59,7 @@ export class InscriptionAtelierPage implements OnInit {
           param1 :this.item
         }
         };
-      this.router.navigate(['/atelier'],NavigationExtras)
+      this.router.navigate(['/home'],NavigationExtras)
      
       return true;
     }

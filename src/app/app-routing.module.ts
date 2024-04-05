@@ -19,10 +19,7 @@ const routes: Routes = [
     path: 'inscription-atelier',
     loadChildren: () => import('./inscription-atelier/inscription-atelier.module').then( m => m.InscriptionAtelierPageModule)
   },
-  {
-    path: 'erreur',
-    loadChildren: () => import('./erreur/erreur.module').then( m => m.ErreurPageModule)
-  },
+
 ];
 
 @NgModule({
