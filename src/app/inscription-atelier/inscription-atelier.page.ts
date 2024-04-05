@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router, NavigationExtras } from '@angular/router'
 
 @Component({
   selector: 'app-inscription-atelier',
