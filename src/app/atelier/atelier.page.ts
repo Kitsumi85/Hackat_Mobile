@@ -18,8 +18,6 @@ export class AtelierPage implements OnInit {
       this.id= navigation.param1;
       let url = "http://192.168.55.15:8080/api/evenements-ateliers/" + this.id.id;
       this.http.get(url).subscribe(data =>{
-        
-      console.log(data)
       this.LesAteliers=data;
     })
   }
@@ -30,7 +28,6 @@ export class AtelierPage implements OnInit {
 
   onSubmit(item: any) {
     this.submitted = true;
-    console.log(item)
     let NavigationExtras:NavigationExtras={
       state:{
         param1 :item

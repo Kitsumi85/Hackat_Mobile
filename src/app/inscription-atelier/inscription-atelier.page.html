@@ -29,12 +29,11 @@
       adresse invalide
     </span>
     <ion-col>
-      <ion-button type="submit" color="primary" expand="block">Submit</ion-button>
+      <ion-button type="submit" color="primary" expand="block">S'inscrire</ion-button>
       <ion-alert
         [isOpen]="isAlertOpen"
-        header="A Short Title Is Best"
-        subHeader="A Sub Header Is Optional"
-        message="A message should be a short, complete sentence."
+        header="Déjà inscrit !"
+        message="Vous êtes déjà inscrit à cette atelier. Si vous êtes intéressé par un autre atelier retournait sur la page des ateliers disponiblent lors de cette hackathon."
         [buttons]="alertButtons"
         (didDismiss)="setOpen(false)"
       ></ion-alert>

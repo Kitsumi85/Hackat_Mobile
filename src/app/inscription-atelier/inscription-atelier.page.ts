@@ -14,7 +14,7 @@ export class InscriptionAtelierPage implements OnInit {
   item : any;
   submitted = false;
   isAlertOpen = false;
-  alertButtons = ['Action'];
+  alertButtons = ['Retour'];
   setOpen(isOpen: boolean) {
     this.isAlertOpen = isOpen;
   }
@@ -39,28 +39,25 @@ export class InscriptionAtelierPage implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (!this.myForm.valid) {
-      console.log('All fields are required.')
       return false;
     } else {
-      console.log(this.myForm.value)
       this.http.post("http://192.168.55.15:8080/api/inscription-atelier/" + this.item.id, JSON.stringify(this.myForm.value), {
         headers: {"Content-Type": "application/json; charset=utf-8"}
       }).subscribe(
-
         (data:any) =>{ 
-        console.log(data)
         if (data.erreur) {
           this.setOpen(true)
         }
+        else{
+          let NavigationExtras:NavigationExtras={
+          state:{
+            param1 :this.item
+          }
+          };
+          this.router.navigate(['/home'],NavigationExtras)
+        }
         },
         );
-      let NavigationExtras:NavigationExtras={
-        state:{
-          param1 :this.item
-        }
-        };
-      this.router.navigate(['/home'],NavigationExtras)
-     
       return true;
     }
   }
