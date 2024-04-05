@@ -11,8 +11,9 @@ import { Router, NavigationExtras } from '@angular/router'
 export class InscriptionAtelierPage implements OnInit {
 
   myForm: any;
+  item : any;
   submitted = false;
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder, public http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
