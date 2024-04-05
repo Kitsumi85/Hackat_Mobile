@@ -10,7 +10,8 @@ import { ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 export class AtelierPage implements OnInit {
 
   public LesAteliers:any
-  public id:any; 
+  public id:any;
+  submitted = false; 
   constructor(public http:HttpClient, private router: Router)
     { 
       let navigation:any =this.router.getCurrentNavigation()?.extras.state
