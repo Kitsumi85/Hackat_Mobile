@@ -8,12 +8,16 @@ import { AtelierPageRoutingModule } from './atelier-routing.module';
 
 import { AtelierPage } from './atelier.page';
 
+import { IonicStorageModule } from '@ionic/storage-angular';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AtelierPageRoutingModule
+    AtelierPageRoutingModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [AtelierPage]
 })

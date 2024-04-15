@@ -1,25 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router, NavigationExtras } from '@angular/router'
+import { Router, NavigationExtras } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-atelier',
   templateUrl: './atelier.page.html',
   styleUrls: ['./atelier.page.scss'],
 })
-export class AtelierPage implements OnInit {
+export class AtelierPage{
 
-  public LesAteliers:any
-  public id:any;
+  LesAteliers:any
+  id:any;
+  favAtelier :Array<any> = [];
   submitted = false; 
-  constructor(public http:HttpClient, private router: Router)
-    { 
-      let navigation:any =this.router.getCurrentNavigation()?.extras.state
-      this.id= navigation.param1;
-      let url = "http://192.168.55.15:8080/api/evenements-ateliers/" + this.id.id;
-      this.http.get(url).subscribe(data =>{
-      this.LesAteliers=data;
+  constructor(public http:HttpClient, private router: Router, private storage: Storage)
+  {
+    let navigation:any =this.router.getCurrentNavigation()?.extras.state
+    this.id= navigation.param1;
+    let url = "http://192.168.55.15:8080/api/evenements-ateliers/" + this.id.id;
+    this.http.get(url).subscribe(data =>{
+    this.LesAteliers=data;
     })
+  }
+  async ngOnInit(){
+     this.favAtelier = await this.storage.get("favAtelier")
+    }
+  
+  OnLike(id : any){
+    
   }
 
   splitDate(value:any){
@@ -36,8 +45,4 @@ export class AtelierPage implements OnInit {
     this.router.navigate(['/inscription-atelier'],NavigationExtras);
 
   }
-
-  ngOnInit() {
-  }
-
 }
